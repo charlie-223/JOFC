@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy of Faith - About Us</title>
+    <link rel="stylesheet" href="style1.css"> 
+    </head>
+    <style>
+     .boutp {
+    display: flex;
+    justify-content: center;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: #2f3e1f;
+    margin-left: 800px;
+    padding-bottom: 10px; /* Optional: adds space between text and line */
+     }
+     .info{
+        padding-left: 900px;
+        display: flex;
+        justify-content: left;
+        margin-left: 80px;
+        font-size: 1.7rem;
+        margin-bottom: 10px;
+        color: #2f3e1f;
+       
+     }
+     .spacing{
+        margin-bottom: 100px;
+     }
+     .info img{
+        height: 40px;
+        width: 40px;
+        padding-right: 10px;
+     }
+     .page-watermark {
+        position: fixed;
+        bottom: -80px;
+        right: -80px;
+        width: 700px;
+        height: 700px;
+        opacity: 0.35;
+        pointer-events: none;
+        z-index: -1;
+        transform: rotate(-5deg);
+        filter: brightness(1) contrast(1.2);
+    }
+    </style>
+    <body>
+    <nav class="main-navigation">
+    <div class="container">
+        <header class="site-header">
+            <div class="logo">
+                <ul>
+                    <li>
+                        <a href="/">
+                            <img src="img/ico/logo.png" alt="Joy of Faith logo">
+                        </a>
+                    </li>
+                    <li>
+                        <div class="logo-text">
+                            <h2>
+                                Joy of Faith<br>
+                                North Caloocan
+                            </h2>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <ul class="nav-links">
+                <li style="font-size: 20px;"><a href="index.html">Home</a></li>
+                <li style="font-size: 20px;"><a href="events.html">Events</a></li>
+                <li style="font-size: 20px;"><a href="history.html">History</a></li>
+                <li style="font-size: 20px;"><a href="blog.html">Blog / News</a></li>
+                <li style="font-size: 20px;"><a href="about.html" class="active">About Us</a></li>
+            </ul>
+            <div class="logbot">
+                <a href="login.html">
+                    <img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;">
+                </a>
+            </div>
+        </header>
+    </div>
+</nav>
+
+            <div class="header-actions">
+                </div>
+        </header>
+        <section>
+    <p class="boutp">
+        The vibrant choir's voices soared through the sanctuary,<br>
+        their harmonies intertwining like threads of gold,<br>
+        filling the air with a powerful message of hope and <br>
+        praise that resonated deep within the hearts of all those gathered.
+    </p>
+    <hr style="border: 1px solid #2f3e1f; width: 900px;  float: right; margin-right: 100px;">
+     <br>
+     <br>
+     <br>
+     <br>
+     <br>
+     <div class="spacing">
+     <p class="info">For more information please contact us:</p>
+     <a href="https://www.facebook.com/profile.php?id=100083225024459" class="info"><img src="./img/ico/facebook.png" alt=""><span><u>  Joy Of Faith North Caloocan</u></span></a>
+     <a href="#" onclick="copyText(this)" class="info"><img src="./img/ico/phone.png" alt=""><span><u>  +639335578076</u></span></a>
+     </div>
+</section>
+ 
+        <footer class="site-footer">
+          <p>JOY OF FAITH CHURCH<br>
+          BAGUMBONG, NORTH CALOOCAN<br>
+          Metro Manila, Philippines</p> 
+          <p>&copy; 2025 Joy of Faith North Caloocan. All rights reserved.</p>
+        </footer>
+
+        </div>
+
+<script>
+  function copyText(el) {
+    const textToCopy = el.textContent;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      alert(`Copied: "${textToCopy}"`);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  }
+</script>
+
+<img src="./img/ico/logo.png" alt="Logo" class="page-watermark">
+
+</body>
+</html>

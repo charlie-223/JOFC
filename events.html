@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy of Faith - Events</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .calendar-container {
+            max-width: 1200px;
+            margin: 2rem auto 0; /* Remove bottom margin */
+            background: rgb(247,246,217);  /* Updated background color */
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .calendar-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 0 1rem;
+        }
+
+        .calendar-filters {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: center; /* Added to align items vertically */
+        }
+
+        .calendar-filters select,
+        .calendar-filters input {
+            padding: 8px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .add-event-btn {
+            background: #2d4e10;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-event-btn:hover {
+            background: #1d3208;
+            color: white;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 4px;
+            table-layout: fixed;
+            font-weight: bold;
+        }
+
+        .calendar-table th,
+        .calendar-table td,
+        .calendar-day,
+        .date,
+        .event {
+            font-weight: bold;
+        }
+
+        .calendar-table tr {
+            background: rgb(247,246,217);
+        }
+
+        .calendar-table td {
+            background: white;  /* Revert from #e1e2e4 */
+            border: 1px solid #eee;
+            border-radius: 8px;
+        }
+
+        .calendar-table th {
+            background: rgb(247,246,217);
+            color: #2d4e10;
+            padding: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+        }
+
+        .calendar-day {
+            height: 110px; /* Fixed height */
+            max-height: 110px;
+            overflow: hidden;
+            padding: 0.8rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-day:hover {
+            background: #f8faf8;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .date {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.8rem;
+        }
+
+        .event {
+            padding: 6px 12px;
+            border-radius: 6px;
+            margin-bottom: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .event-service { background: #e3f2fd; color: #1976d2; }
+        .event-prayer { background: #f3e5f5; color: #7b1fa2; }
+        .event-meeting { background: #fff3e0; color: #ef6c00; }
+        .event-special { background: #e8f5e9; color: #2e7d32; }
+
+        .event:hover {
+            transform: scale(1.02);
+            filter: brightness(0.95);
+        }
+
+        .event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-controls { flex-direction: column; gap: 1rem; }
+            .calendar-filters { flex-wrap: wrap; }
+            .calendar-day { height: auto; min-height: 100px; }
+        }
+
+        /* Calendar Table Styles */
+        .calendar-header {
+            background: #2d4e10;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .calendar-nav-btn {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-nav-btn:hover {
+            background: white;
+            color: #2d4e10;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            padding: 1rem;
+        }
+
+        .calendar-grid-header {
+            text-align: center;
+            font-weight: 600;
+            color: #2d4e10;
+            padding: 1rem;
+            background: #f8faf8;
+            border-radius: 8px;
+        }
+
+        .calendar-day-cell {
+            min-height: 120px;
+            padding: 0.8rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            background: white;  /* Revert from #e1e2e4 */
+        }
+
+        .calendar-day-cell:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+        }
+
+        .calendar-day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .calendar-day-number {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .calendar-today {
+            background: #f0f7ed;
+            border: 2px solid #2d4e10;
+        }
+
+        .calendar-other-month {
+            background: #f9f9f9;  /* Revert from #e1e2e4 */
+            color: #bbb;
+        }
+
+        .calendar-events-list {
+            max-height: 50px; /* Limit event list height */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        @media (max-width: 768px) {
+            .calendar-grid {
+                grid-template-columns: repeat(1, 1fr);
+            }
+            
+            .calendar-grid-header {
+                display: none;
+            }
+
+            .calendar-day-cell {
+                min-height: auto;
+            }
+        }
+
+        .events-page-wrapper {
+            height: auto;
+            min-height: 100vh;
+            overflow: hidden;
+            background-color: rgb(225,226,228);
+            padding-bottom: 2rem;  /* Restore padding */
+        }
+
+        .theme-showcase h1 {
+            color: rgb(45, 78, 16);
+        }
+
+        .container.theme-showcase {
+            padding-bottom: 0; /* Remove bottom padding */
+            margin-bottom: 0; /* Remove bottom margin */
+        }
+
+        .add-event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .add-event-modal.show {
+            display: flex;
+        }
+
+        .add-event-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .add-event-form input,
+        .add-event-form select,
+        .add-event-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        .add-event-form button {
+            background: #2d4e10;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .add-event-form button.cancel {
+            background: #666;
+            margin-right: 10px;
+        }
+
+        .add-event-form button.cancel:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-navigation">
+        <div class="container">
+            <header class="site-header">
+                <div class="logo">
+                    <ul>
+                        <li>
+                            <a href="/">
+                                <img src="img/ico/logo.png" alt="Joy of Faith logo">
+                            </a>
+                        </li>
+                        <li>
+                            <div class="logo-text">
+                                <h2>Joy of Faith<br>North Caloocan</h2>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav-links">
+                    <li style="font-size: 20px;"><a href="index.html">Home</a></li>
+                    <li style="font-size: 20px;"><a href="events.html" class="active">Events</a></li>
+                    <li style="font-size: 20px;"><a href="history.html">History</a></li>
+                    <li style="font-size: 20px;"><a href="blog.html">Blog / News</a></li>
+                    <li style="font-size: 20px;"><a href="about.html">About Us</a></li>
+                </ul>
+                <div class="logbot">
+                    <a href="login.html">
+                        <img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;">
+                    </a>
+                </div>
+            </header>
+        </div>
+    </nav>
+
+    <div class="events-page-wrapper">
+        <div class="container theme-showcase">
+            <h1>Church Events Calendar</h1>
+            <div class="calendar-container">
+                <div class="calendar-controls">
+                    <div class="calendar-filters">
+                        <input type="text" id="eventSearch" placeholder="Search events...">
+                        <select id="eventCategory">
+                            <option value="">All Categories</option>
+                            <option value="service">Services</option>
+                            <option value="prayer">Prayer Meetings</option>
+                            <option value="meeting">Leadership Meetings</option>
+                            <option value="special">Special Events</option>
+                        </select>
+                        <a href="#" class="add-event-btn">
+                            <i class="bi bi-plus-lg"></i> Add New Event
+                        </a>
+                    </div>
+                </div>
+                <div id="holder" class="row"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="event-modal" id="eventModal">
+        <div class="modal-content">
+            <h3 id="modalTitle" style="color: #2d4e10; margin-bottom: 1rem;"></h3>
+            <div id="modalDetails">
+                <p><strong>Date:</strong> <span id="modalDate"></span></p>
+                <p><strong>Time:</strong> <span id="modalTime"></span></p>
+                <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+                <p><strong>Description:</strong></p>
+                <p id="modalDescription"></p>
+            </div>
+            <button onclick="closeEventModal()" class="close-modal-btn" style="background: #2d4e10; color: white; padding: 8px 16px; border: none; border-radius: 8px; margin-top: 1rem;">Close</button>
+        </div>
+    </div>
+
+    <div class="add-event-modal" id="addEventModal">
+        <div class="add-event-form">
+            <h2>Add New Event</h2>
+            <form onsubmit="return handleAddEvent(event)">
+                <input type="text" placeholder="Event Title" id="eventTitle" required>
+                <textarea placeholder="Event Description" id="eventDesc" required></textarea>
+                <input type="date" id="eventDate" required>
+                <input type="time" id="eventStartTime" required>
+                <input type="time" id="eventEndTime" required>
+                <select id="eventCategory" required>
+                    <option value="service">Service</option>
+                    <option value="prayer">Prayer Meeting</option>
+                    <option value="meeting">Leadership Meeting</option>
+                    <option value="special">Special Event</option>
+                </select>
+                <div style="margin-top: 1rem;">
+                    <button type="button" class="cancel" onclick="closeAddEventModal()">Cancel</button>
+                    <button type="submit">Add Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script id="calendarTemplate" type="text/template">
+        <div class="calendar-header">
+            <button class="calendar-nav-btn" onclick="prevMonth()">Previous</button>
+            <h2><%= currentMonth %></h2>
+            <button class="calendar-nav-btn" onclick="nextMonth()">Next</button>
+        </div>
+        <table class="calendar-table">
+            <thead>
+                <tr>
+                    <th>Sunday</th>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0; i < calendar.length; i++) { %>
+                    <tr>
+                        <% for(let j = 0; j < 7; j++) { %>
+                            <td class="calendar-day <%= calendar[i][j].className %>">
+                                <div class="date"><%= calendar[i][j].date %></div>
+                                <% calendar[i][j].events.forEach(function(event) { %>
+                                    <div class="event event-<%= event.category %>" onclick="showEventDetails('<%= JSON.stringify(event).replace(/'/g, "\\'") %>')">
+                                        <%= event.title %>
+                                    </div>
+                                <% }); %>
+                            </td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Initialize empty events array
+            window.allEvents = window.allEvents || [];
+
+            // Rest of calendar initialization
+            let currentDate = new Date();
+            const monthNames = ["January", "February", "March", "April", "May", "June",
+                              "July", "August", "September", "October", "November", "December"];
+
+            function buildCalendar() {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth();
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                
+                let calendar = [];
+                let week = [];
+                
+                // Fill in previous month's days
+                let day = new Date(firstDay);
+                day.setDate(day.getDate() - day.getDay());
+                
+                while (calendar.length < 6) {
+                    week = [];
+                    for (let i = 0; i < 7; i++) {
+                        week.push({
+                            date: day.getDate(),
+                            className: getDateClassName(day),
+                            events: getEventsForDate(day)
+                        });
+                        day.setDate(day.getDate() + 1);
+                    }
+                    calendar.push(week);
+                }
+
+                const template = $('#calendarTemplate').html();
+                const rendered = _.template(template)({
+                    calendar: calendar,
+                    currentMonth: `${monthNames[month]} ${year}`
+                });
+                
+                $('#holder').html(rendered);
+            }
+
+            function getDateClassName(date) {
+                let classes = [];
+                if (date.getMonth() !== currentDate.getMonth()) {
+                    classes.push('outside');
+                }
+                if (isToday(date)) {
+                    classes.push('today');
+                }
+                return classes.join(' ');
+            }
+
+            function isToday(date) {
+                const today = new Date();
+                return date.toDateString() === today.toDateString();
+            }
+
+            function getEventsForDate(date) {
+                return window.allEvents.filter(event => {
+                    const eventDate = new Date(event.date);
+                    return eventDate.toDateString() === date.toDateString();
+                }).map(event => ({
+                    title: event.title,
+                    category: event.category,
+                    description: event.description,
+                    time: `${event.startTime} - ${event.endTime}`
+                }));
+            }
+
+            // Remove database fetch and call buildCalendar directly
+            buildCalendar();
+
+            // Expose navigation functions
+            window.prevMonth = function() {
+                currentDate.setMonth(currentDate.getMonth() - 1);
+                buildCalendar();
+            };
+
+            window.nextMonth = function() {
+                currentDate.setMonth(currentDate.getMonth() + 1);
+                buildCalendar();
+            };
+
+            // Add these functions
+            function showAddEventModal() {
+                document.getElementById('addEventModal').classList.add('show');
+            }
+
+            // Update closeAddEventModal function
+            function closeAddEventModal() {
+                const modal = document.getElementById('addEventModal');
+                modal.classList.remove('show');
+                modal.querySelector('form').reset();
+            }
+
+            // Make function globally available
+            window.closeAddEventModal = closeAddEventModal;
+
+            function handleAddEvent(event) {
+                event.preventDefault();
+                const newEvent = {
+                    title: document.getElementById('eventTitle').value,
+                    description: document.getElementById('eventDesc').value,
+                    date: document.getElementById('eventDate').value,
+                    startTime: document.getElementById('eventStartTime').value,
+                    endTime: document.getElementById('eventEndTime').value,
+                    category: document.getElementById('eventCategory').value
+                };
+
+                // Add event to allEvents array
+                window.allEvents.push(newEvent);
+                
+                // Save to localStorage
+                localStorage.setItem('calendarEvents', JSON.stringify(window.allEvents));
+                
+                // Rebuild calendar to show new event
+                buildCalendar();
+                
+                // Close modal and reset form
+                closeAddEventModal();
+                event.target.reset();
+                return false;
+            }
+
+            // Load saved events when page loads
+            const savedEvents = localStorage.getItem('calendarEvents');
+            if (savedEvents) {
+                window.allEvents = JSON.parse(savedEvents);
+            }
+
+            // Make handleAddEvent globally available
+            window.handleAddEvent = handleAddEvent;
+
+            // Initial calendar build
+            buildCalendar();
+
+            // Update the add event button onclick
+            document.querySelector('.add-event-btn').onclick = showAddEventModal;
+
+            // Check for new event from dashboard
+            const newEvent = localStorage.getItem('newEvent');
+            if (newEvent) {
+                window.allEvents.push(JSON.parse(newEvent));
+                localStorage.removeItem('newEvent');
+                buildCalendar();
+            }
+
+            function filterEvents(category) {
+                const filteredEvents = category === 'all' ? 
+                    window.allEvents : 
+                    window.allEvents.filter(event => event.category === category);
+                
+                // Update calendar with filtered events
+                window.filteredEvents = filteredEvents;
+                buildCalendar();
+            }
+
+            // Make function globally available
+            window.filterEvents = filterEvents;
+        });
+
+        function showEventDetails(eventData) {
+            const event = JSON.parse(eventData);
+            document.getElementById('modalTitle').textContent = event.title;
+            document.getElementById('modalDate').textContent = new Date(event.date).toLocaleDateString();
+            document.getElementById('modalTime').textContent = `${event.startTime} - ${event.endTime}`;
+            document.getElementById('modalCategory').textContent = event.category.charAt(0).toUpperCase() + event.category.slice(1);
+            document.getElementById('modalDescription').textContent = event.description;
+            
+            document.getElementById('eventModal').style.display = 'flex';
+        }
+
+        function closeEventModal() {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+
+        window.closeEventModal = closeEventModal;
+        window.showEventDetails = showEventDetails;
+    </script>
+</body>
+</html>

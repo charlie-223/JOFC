@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy of Faith - Blog/News</title>
+    <link rel="stylesheet" href="style1.css">
+    <style>
+    .piccon{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+     }
+     .piccon h2{
+        font-size: 30px;
+     }
+     .piccon p {
+        font-size: 20px;
+     }
+
+    .blog-page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Added to push footer down */
+    }
+
+    .blog-content {
+        flex: 1;
+        padding: 2rem 0;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-bottom: 100px; /* Increased space above footer */
+    }
+
+    .blog-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 368px);
+        gap: 2rem;
+        padding: 2rem;
+        justify-content: center;
+    }
+
+    .blog-card {
+        width: 368px;
+        height: 412.55px;
+        background: white;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .blog-image {
+        width: 368px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .blog-text {
+        padding: 1.5rem;
+        height: 212.55px;
+        overflow: hidden;
+    }
+
+    .blog-text h2 {
+        color: #2d4e10;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .blog-text p {
+        color: #666;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    .blog-date {
+        color: #888;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+    }
+
+    .site-footer {
+        width: 100%;
+        padding: 20px;
+        background: linear-gradient(to right, #222, #333);
+        position: relative;
+        margin-top: auto; /* Push footer to bottom */
+    }
+    </style>
+</head>
+<body>
+    <nav class="main-navigation">
+        <div class="container">
+            <header class="site-header">
+                <div class="logo">
+                    <ul>
+                        <li><img src="./img/ico/logo.png" alt="Logo"></li>
+                        <li>
+                            <div class="logo-text">
+                                <h2>Joy of Faith<br>North Caloocan</h2>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="history.html">History</a></li>
+                    <li><a href="blog.html" class="active">Blog / News</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+                <div class="logbot">
+                    <a href="login.html"><img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;"></a>
+                </div>
+            </header>
+        </div>
+    </nav>
+
+    <div class="blog-page">
+        <div class="blog-content">
+            <h1>Church Blog & News</h1>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="./img/pics/PICTURE1.jpg" alt="3rd Anniversary" class="blog-image">
+                    <div class="blog-text">
+                        <h2>3rd Year Anniversary Celebration</h2>
+                        <p>Witness our church's growth as we celebrate three years of God's faithfulness. More people are attending and growing as leaders in their faith journey.</p>
+                        <div class="blog-date">March 15, 2024</div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <img src="./img/pics/PICTURE3.jpg" alt="2nd Anniversary" class="blog-image">
+                    <div class="blog-text">
+                        <h2>Looking Back: 2nd Anniversary Highlights</h2>
+                        <p>A heartwarming celebration of growth in numbers and faith. Our church family continues to strengthen in unity and purpose.</p>
+                        <div class="blog-date">March 15, 2023</div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <img src="./img/pics/PICTURE5.jpg" alt="Night Prayer" class="blog-image">
+                    <div class="blog-text">
+                        <h2>Weekly Night Prayer Gatherings</h2>
+                        <p>Join us every Thursday from 8-9pm as we deepen our relationship with God through prayer and fellowship.</p>
+                        <div class="blog-date">Weekly Update</div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <img src="./img/pics/PICTURE7.jpg" alt="Online Mentoring" class="blog-image">
+                    <div class="blog-text">
+                        <h2>Online Mentoring ng mga Leaders (8-9pm) FRIDAY</h2>
+                        <p>This is training and preparation for the appointment of each leader in the work entrusted to us by God.</p>
+                        <div class="blog-date">Weekly Update</div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <img src="./img/pics/PICTURE9.jpg" alt="Mentoring" class="blog-image">
+                    <div class="blog-text">
+                        <h2>MENTORING</h2>
+                        <p>Mentoring ng mga kabataan kananayan katatayan, yung dito naman may mga kasama silang leaders at may kasama silang mga hindi pa leaders, at konting share-ran lang ng bible verse etc.</p>
+                        <div class="blog-date">Weekly Update</div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <img src="./img/pics/PICTURE12.jpg" alt="Youth Service" class="blog-image">
+                    <div class="blog-text">
+                        <h2>Youth service every month Sept 28 4PM - 6PM</h2>
+                        <p>Youth service is a gathering dedicated to young people, designed to bring them together in worship, prayer, and studying God’s Word. The goal is to inspire the youth to grow deeper in their faith, develop their talents and abilities, and build a closer relationship with Christ.</p>
+                        <div class="blog-date">Monthly Update</div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <img src="./img/pics/PICTURE14.jpg" alt="Baptism" class="blog-image">
+                    <div class="blog-text">
+                        <h2>Baptism</h2>
+                        <p>The baptismal service in our church is an annual special event held to signify the believers' commitment to their faith in Christ. It is a meaningful ceremony symbolizing new life and cleansing from sin through obedience to God's command. This takes place in a designated location, such as a river, sea, or baptismal pool, where each candidate is baptized in water as a public declaration of their personal acceptance of Jesus.</p>
+                        <div class="blog-date">Annual Update</div>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <img src="./img/pics/PICTURE17.jpg" alt="Sunday Service" class="blog-image">
+                    <div class="blog-text">
+                        <h2>Sunday Service 9AM - 11AM</h2>
+                        <p>Our Sunday service is a weekly gathering to worship God, hear His Word, and grow in faith. It includes praise and worship, an inspiring sermon, and prayer. It’s a time to honor God, strengthen our faith, and connect with one another.</p>
+                        <div class="blog-date">Weekly Update</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

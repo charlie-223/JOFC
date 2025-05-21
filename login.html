@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joy of Faith - Login</title>
+    <link rel="stylesheet" href="style1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .login-container {
+            max-width: 450px;  /* Increased from 400px */
+            width: 90%;
+            height: 500px;     /* Increased from 450px */
+            margin: 60px auto; /* Adjusted margin to balance increased height */
+            padding: 2.5rem;   /* Increased padding */
+            background: rgb(247,246,217);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex; /* Added to help with content centering */
+            flex-direction: column;
+            justify-content: center;
+            position: relative;  /* Add this */
+        }
+
+        .login-container h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #2d4e10;
+            margin-bottom: 1.8rem;
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            position: relative;
+        }
+
+        .form-group label {
+            color: #2d4e10;
+            font-weight: 500;
+            font-size: 1.2rem;
+        }
+
+        .form-group input {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 65%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #2d4e10;
+            font-size: 1.8rem; /* Increased from 1.5rem */
+        }
+
+        .login-btn {
+            background: #2d4e10;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .login-btn:hover {
+            background: #1d3208;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .register-link a {
+            color: #2d4e10;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .page-watermark {
+            position: fixed;
+            bottom: -80px;
+            right: -80px;
+            width: 700px;
+            height: 700px;
+            opacity: 0.35;  /* Increased opacity */
+            pointer-events: none;
+            z-index: 0;
+            transform: rotate(-5deg);
+            filter: brightness(1) contrast(1.2); /* Adjusted filters */
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .forgot-password a {
+            color: #2d4e10;
+            text-decoration: underline;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-navigation">
+        <div class="container">
+            <header class="site-header">
+                <div class="logo">
+                    <ul>
+                        <li><img src="./img/ico/logo.png" alt="Logo"></li>
+                        <li>
+                            <div class="logo-text">
+                                <h2>Joy of Faith<br>North Caloocan</h2>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav-links">
+                    <li style="font-size: 20px;"><a href="index.html">Home</a></li>
+                    <li style="font-size: 20px;"><a href="events.html">Events</a></li>
+                    <li style="font-size: 20px;"><a href="history.html">History</a></li>
+                    <li style="font-size: 20px;"><a href="blog.html">Blog / News</a></li>
+                    <li style="font-size: 20px;"><a href="about.html">About Us</a></li>
+                </ul>
+                <div class="logbot">
+                    <a href="signup.html"><img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;"></a>
+                </div>
+            </header>
+        </div>
+    </nav>
+
+    <div class="login-container">
+        <h2>Login to Your Account</h2>
+        <form class="login-form" onsubmit="return validateLogin(event)">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                <i class="bi bi-eye-slash password-toggle" onclick="togglePassword('password', this)"></i>
+            </div>
+            <div class="forgot-password">
+                <a href="forgot-password.html">Forgot password?</a>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <div class="register-link">
+            <p>Don't have an account? <a href="register.html">Register here</a></p>
+        </div>
+    </div>
+
+    <img src="./img/ico/logo.png" alt="Logo" class="page-watermark">
+
+    <script>
+        function validateLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Basic validation
+            if (email && password) {
+                // Add your actual login validation here
+                window.location.href = 'dashboard.html';
+            } else {
+                alert('Please fill in all fields');
+            }
+            return false;
+        }
+
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        }
+    </script>
+</body>
+</html>
