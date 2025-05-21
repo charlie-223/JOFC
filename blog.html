@@ -2,21 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joy of Faith - Blog/News</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Joy of Faith - Blog/News</title>
     <link rel="stylesheet" href="style1.css">
-    <style>
-    .piccon{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-     }
-     .piccon h2{
-        font-size: 30px;
-     }
-     .piccon p {
-        font-size: 20px;
-     }
+    <script src="js/navigation.js" defer></script>
+    <style>   
 
     .blog-page {
         min-height: 100vh;
@@ -31,39 +20,40 @@
         max-width: 1200px;
         margin: 0 auto;
         margin-bottom: 100px; /* Increased space above footer */
-    }
-
+    }    
+    
     .blog-grid {
         display: grid;
-        grid-template-columns: repeat(3, 368px);
+        grid-template-columns: repeat(auto-fit, minmax(300px, 368px));
         gap: 2rem;
         padding: 2rem;
         justify-content: center;
     }
 
     .blog-card {
-        width: 368px;
-        height: 412.55px;
+        width: 100%;
+        max-width: 368px;
+        height: auto;
+        min-height: 412.55px;
         background: white;
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         transition: transform 0.3s ease;
+        margin: 0 auto;
     }
 
     .blog-card:hover {
         transform: translateY(-5px);
-    }
-
-    .blog-image {
-        width: 368px;
+    }    .blog-image {
+        width: 100%;
         height: 200px;
         object-fit: cover;
     }
 
     .blog-text {
         padding: 1.5rem;
-        height: 212.55px;
+        min-height: 212.55px;
         overflow: hidden;
     }
 
@@ -92,31 +82,104 @@
         position: relative;
         margin-top: auto; /* Push footer to bottom */
     }
+
+        .logbot {
+            position: absolute;
+            top: 50%;
+            right: 80px;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
+
+        .blog-content {
+            padding: 1rem;
+            margin-bottom: 50px;
+        }
+
+        .blog-grid {
+            padding: 1rem;
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            min-height: auto;
+        }
+
+        .blog-text h2 {
+            font-size: 1.3rem;
+        }
+
+        .blog-text p {
+            font-size: 0.9rem;
+        }
+
+        .logo {
+            z-index: 1001;
+        }
+
+    @media (max-width: 480px) {
+        .blog-content {
+            padding: 0.5rem;
+        }
+
+        .blog-grid {
+            padding: 0.5rem;
+            gap: 1rem;
+        }
+
+        .blog-text {
+            padding: 1rem;
+        }
+
+        .blog-text h2 {
+            font-size: 1.2rem;
+        }
+
+        .blog-date {
+            font-size: 0.8rem;
+        }
+    }
     </style>
 </head>
 <body>
     <nav class="main-navigation">
-        <div class="container">
-            <header class="site-header">
+        <div class="container">            <header class="site-header">
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <rect y="4" width="24" height="2" fill="#2d4e10"/>
+                        <rect y="11" width="24" height="2" fill="#2d4e10"/>
+                        <rect y="18" width="24" height="2" fill="#2d4e10"/>
+                    </svg>
+                </button>
                 <div class="logo">
                     <ul>
-                        <li><img src="./img/ico/logo.png" alt="Logo"></li>
+                        <li>
+                            <a href="/">
+                                <img src="img/ico/logo.png" alt="Joy of Faith logo">
+                            </a>
+                        </li>
                         <li>
                             <div class="logo-text">
-                                <h2>Joy of Faith<br>North Caloocan</h2>
+                                <h2>
+                                    Joy of Faith<br>
+                                    North Caloocan
+                                </h2>
                             </div>
                         </li>
+                    </ul>                </div>
+                <nav class="nav-menu">
+                    <ul class="nav-links">
+                        <li style="font-size: 20px;"><a href="index.html">Home</a></li>
+                        <li style="font-size: 20px;"><a href="events.html">Events</a></li>
+                        <li style="font-size: 20px;"><a href="history.html">History</a></li>
+                        <li style="font-size: 20px;"><a href="blog.html" class="active">Blog / News</a></li>
+                        <li style="font-size: 20px;"><a href="about.html">About Us</a></li>
                     </ul>
-                </div>
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="history.html">History</a></li>
-                    <li><a href="blog.html" class="active">Blog / News</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                </ul>
+                </nav>
                 <div class="logbot">
-                    <a href="login.html"><img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;"></a>
+                    <a href="login.html">
+                        <img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;">
+                    </a>
                 </div>
             </header>
         </div>

@@ -163,43 +163,105 @@
       color: #2f3e1f;
       text-decoration: none;
       font-size: 1.1rem;
-    }
-    /* Responsive */
+    }    /* Responsive */
     @media (max-width: 768px) {
-      .content-wrapper { flex-direction: column; }
-      h2 { text-align: center; }
-      .left-col .message { position: static; transform: none; margin-top: 30px; }
-      .main-navigation { flex-wrap: wrap; justify-content: center; }
-      .main-navigation .logo img { width: 60px; height: 60px; }
-      .main-navigation .logo-text h2 { font-size: 32px; text-align: center; }
-      .main-navigation ul.nav-links { justify-content: center; margin-top: 10px; }
-      .main-navigation .logbot { margin-top: 10px; }
+      .container-log {
+        max-width: 100%;
+        padding: 20px;
+        margin-top: 20px;
+      }
+      .content-wrapper { 
+        flex-direction: column;
+        gap: 20px;
+      }
+      .tabs {
+        font-size: 2rem;
+      }
+      .tabs span {
+        margin: 0 15px;
+      }
+      h2 { 
+        text-align: center;
+        font-size: 2rem;
+      }
+      .left-col .message { 
+        position: static;
+        transform: none;
+        margin-top: 20px;
+        text-align: center;
+        font-size: 24px;
+      }
+      .form-control {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+      }
+      .btn-custom {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container-log {
+        padding: 15px;
+      }
+      .tabs {
+        font-size: 1.8rem;
+      }
+      .tabs span {
+        margin: 0 10px;
+      }
+      h2 {
+        font-size: 1.8rem;
+      }
+      .left-col .message {
+        font-size: 20px;
+      }
+      .form-control {
+        padding: 10px 15px;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- Restore original navbar structure -->
-  <nav class="main-navigation">
-    <div class="logo">
-      <ul>
-        <li><img src="./img/ico/logo.png" alt="Logo"></li>
-        <li><div class="logo-text"><h2>Joy of Faith<br>North Caloocan</h2></div></li>
-      </ul>
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="events.html">Events</a></li>
-      <li><a href="history.html">History</a></li>
-      <li><a href="blog.html">Blog / News</a></li>
-      <li><a href="about.html">About Us</a></li>
-    </ul>
-    <div class="logbot">
-      <a href="signup.html"><img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;"></a>
-    </div>
-  </nav>
+    <nav class="main-navigation">
+        <div class="container">
+            <header class="site-header">
+                <div class="logo">
+                    <ul>
+                        <li>
+                            <a href="/">
+                                <img src="img/ico/logo.png" alt="Joy of Faith logo">
+                            </a>
+                        </li>
+                        <li>
+                            <div class="logo-text">
+                                <h2>
+                                    Joy of Faith<br>
+                                    North Caloocan
+                                </h2>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="nav-links">
+                    <li style="font-size: 20px;"><a href="index.html">Home</a></li>
+                    <li style="font-size: 20px;"><a href="events.html">Events</a></li>
+                    <li style="font-size: 20px;"><a href="history.html">History</a></li>
+                    <li style="font-size: 20px;"><a href="blog.html">Blog / News</a></li>
+                    <li style="font-size: 20px;"><a href="about.html">About Us</a></li>
+                </ul>
+                <div class="logbot">
+                    <a href="signup.html" class="active">
+                        <img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;">
+                    </a>
+                </div>
+            </header>
+        </div>
+    </nav>
 
-  <!-- Main Form Container (unchanged) -->
-  <div class="container-log">
+    <!-- Main Form Container (unchanged) -->
+    <div class="container-log">
     <!-- Tabs -->
     <div class="tabs">
       <span id="signinTab" class="active">SIGN-IN</span>

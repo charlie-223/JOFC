@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joy of Faith - History</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Joy of Faith - History</title>
     <link rel="stylesheet" href="style1.css">
+    <script src="js/navigation.js" defer></script>
     <style>
         .page-watermark {
             position: fixed;
@@ -23,12 +23,13 @@
 <body>
     <div class="history-page">
         <nav class="main-navigation">
-            <div class="container">
-                <header class="site-header">
+            <div class="container">                <header class="site-header">
                     <div class="logo">
                         <ul>
                             <li>
-                                <img src="./img/ico/logo.png" alt="Joy of Faith logo">
+                                <a href="/">
+                                    <img src="img/ico/logo.png" alt="Joy of Faith logo">
+                                </a>
                             </li>
                             <li>
                                 <div class="logo-text">
@@ -40,13 +41,32 @@
                             </li>
                         </ul>
                     </div>
-                    <ul class="nav-links">
-                        <li style="font-size: 20px;"><a href="index.html">Home</a></li>
-                        <li style="font-size: 20px;"><a href="events.html">Events</a></li>
-                        <li style="font-size: 20px;"><a href="history.html" class="active">History</a></li>
-                        <li style="font-size: 20px;"><a href="blog.html">Blog / News</a></li>
-                        <li style="font-size: 20px;"><a href="about.html">About Us</a></li>
-                    </ul>
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <rect y="4" width="24" height="2" fill="#2d4e10"/>
+                            <rect y="11" width="24" height="2" fill="#2d4e10"/>
+                            <rect y="18" width="24" height="2" fill="#2d4e10"/>
+                        </svg>
+                    </button>
+                    <nav class="nav-menu">
+                        <ul class="nav-links">
+                            <li style="--i: 1">
+                                <a href="index.html">Home</a>
+                            </li>
+                            <li style="--i: 2">
+                                <a href="events.html">Events</a>
+                            </li>
+                            <li style="--i: 3">
+                                <a href="history.html" class="active">History</a>
+                            </li>
+                            <li style="--i: 4">
+                                <a href="blog.html">Blog / News</a>
+                            </li>
+                            <li style="--i: 5">
+                                <a href="about.html">About Us</a>
+                            </li>
+                        </ul>
+                    </nav>
                     <div class="logbot">
                         <a href="login.html">
                             <img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;">
