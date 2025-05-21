@@ -7,14 +7,9 @@
     <link rel="stylesheet" href="style1.css">
     <script src="js/navigation.js" defer></script>
 
+
+
     <style>
-         .logbot {
-            position: absolute;
-            top: 50%;
-            right: 80px;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
         .about-section {
             max-width: 1200px;
             margin: 0 auto;
@@ -123,16 +118,175 @@
                 bottom: -40px;
                 right: -40px;
             }
+
+            /* Navigation Mobile Styles */
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1002;
+            }
+
+            .menu-toggle.active {
+                opacity: 0.5;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(225, 226, 228, 0.98);
+                transform: translateX(-100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s ease;
+            }
+
+            .nav-menu.active .nav-links {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .logbot {
+                position: absolute;
+                top: 50%;
+                right: 80px;
+                transform: translateY(-50%);
+                z-index: 1001;
+            }
+
+            .logo {
+                z-index: 1001;
+            }
         }
-        </style>       
-        
+
+        /* Navigation Styles */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            width: 44px;
+            height: 44px;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+        }
+
+        .site-header {
+            padding: 20px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background-color: #e1e2e4;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1002;
+                background: none;
+                border: none;
+                cursor: pointer;
+                padding: 10px;
+            }
+
+            .menu-toggle svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(225, 226, 228, 0.98);
+                transform: translateX(-100%);
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .nav-menu.active {
+                transform: translateX(0);
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 2rem;
+                text-align: center;
+                opacity: 0;
+                transform: translateY(20px);
+                transition: all 0.4s ease;
+                padding: 0;
+                margin: 0;
+            }
+
+            .nav-menu.active .nav-links {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .nav-links a {
+                font-size: 20px;
+                color: #2d4e10;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+
+            .nav-links a:hover {
+                color: #1d3208;
+            }
+
+            .nav-links a.active {
+                color: #1d3208;
+                font-weight: bold;
+            }
+        }
+        </style>    
 </head>
 <body>
-
-    
     <div class="joy-of-faith-app">
         <nav class="main-navigation">
-            <div class="container">                <header class="site-header">
+            <div class="container">                
+                <header class="site-header">
                     <div class="logo">
                         <ul>
                             <li>
@@ -182,7 +336,8 @@
                 </header>
             </div>
         </nav>
- 
+       
+        
         
         <p class="boutp">
             The vibrant choir's voices soared through the sanctuary,
@@ -233,7 +388,7 @@
   }
 </script>
 
-<img src="./img/ico/logo.png" alt="Gold circular logo with bold distressed black text JO FC in the center, representing Joy of Faith Church, conveying a strong and uplifting tone" class="page-watermark">
+<img src="./img/ico/logo.png" alt="Logo" class="page-watermark">
 
 </body>
 </html>
