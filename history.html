@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="style1.css">
     <script src="js/navigation.js" defer></script>
     <style>
+
+        body {
+            background: rgb(247,246,217);
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #2d4e10;
+            margin: 0;
+            padding: 0;
+        }
         .page-watermark {
             position: fixed;
             bottom: -80px;
@@ -21,9 +29,10 @@
     </style>
 </head>
 <body>
-    <div class="history-page">
+    <header class="header">
         <nav class="main-navigation">
-            <div class="container">                <header class="site-header">
+            <div class="container">                
+                <header class="site-header">
                     <div class="logo">
                         <ul>
                             <li>
@@ -40,7 +49,7 @@
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                    </div>                    
                     <button class="menu-toggle" aria-label="Toggle menu">
                         <svg viewBox="0 0 24 24" width="24" height="24">
                             <rect y="4" width="24" height="2" fill="#2d4e10"/>
@@ -48,16 +57,16 @@
                             <rect y="18" width="24" height="2" fill="#2d4e10"/>
                         </svg>
                     </button>
-                    <nav class="nav-menu">
+                    <nav class="nav-menu">                        
                         <ul class="nav-links">
                             <li style="--i: 1">
-                                <a href="index.html">Home</a>
+                                <a href="index.html" class="active">Home</a>
                             </li>
                             <li style="--i: 2">
                                 <a href="events.html">Events</a>
                             </li>
                             <li style="--i: 3">
-                                <a href="history.html" class="active">History</a>
+                                <a href="history.html">History</a>
                             </li>
                             <li style="--i: 4">
                                 <a href="blog.html">Blog / News</a>
@@ -69,17 +78,19 @@
                     </nav>
                     <div class="logbot">
                         <a href="login.html">
-                            <img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;">
+                            <img src="./img/ico/profile.png" alt="Profile" style="height: 30px; width: 30px;">
                         </a>
                     </div>
+                    <div class="mobile-overlay"></div>
                 </header>
             </div>
         </nav>
+    </header>
+
 
         <section class="history-section">
             <!-- Add your history content here -->
         </section>
-    </div>
     <img src="./img/ico/logo.png" alt="Logo" class="page-watermark">
 </body>
 </html>

@@ -5,156 +5,233 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joy of Faith - Donate</title>
     <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap" rel="stylesheet">
+    <script src="js/navigation.js" defer></script>
     <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
         .donation-container {
-            max-width: 1400px;
-            margin: 5rem auto;
-            padding: 4rem;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-width: 1100px;
+            margin: 2rem auto;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 16px rgba(45, 78, 16, 0.08);
+            padding: 2rem 1.5rem;
         }
-
-        .donation-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin: 3rem 0;
-        }
-
-        .donation-option {
-            padding: 2.5rem;
-            border: 2px solid #2d4e10;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .donation-option:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .donation-option img {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 2rem;
-        }
-
-        .donation-option h3 {
-            font-size: 1.8rem;
+        .donation-container h1 {
+            font-family: 'Poppins', Arial, sans-serif;
             color: #2d4e10;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+        }
+        .donation-options {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .donation-option {
+            background: #f5f8f3;
+            border: 1.5px solid #e0e8db;
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            flex: 1 1 260px;
+            max-width: 320px;
+            min-width: 220px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 6px rgba(45, 78, 16, 0.05);
+        }
+        .donation-option img {
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
             margin-bottom: 1rem;
         }
-
+        .donation-option h3 {
+            color: #2d4e10;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
         .donation-details {
-            padding: 1rem;
-            background: #f9f9f9;
-            border-radius: 8px;
-            margin-top: 1rem;
-            text-align: left;
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 1.2rem;
+            text-align: center;
         }
-
-        .donation-details p {
-            margin: 0.5rem 0;
-            color: #666;
+        .donation-details strong {
+            color: #2d4e10;
+            font-weight: 500;
         }
-
         .donation-btn {
             background: #2d4e10;
-            color: white;
-            padding: 12px 24px;
+            color: #fff;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 500;
+            padding: 0.7rem 1.5rem;
             border: none;
             border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.2s;
             font-size: 1rem;
             cursor: pointer;
-            transition: background 0.3s ease;
-            text-decoration: none;
+            box-shadow: 0 1px 4px rgba(45, 78, 16, 0.08);
+            margin-top: auto;
+            width: auto;
+            min-width: 140px;
+            max-width: 100%;
+            text-align: center;
             display: inline-block;
-            margin-top: 1rem;
         }
-
-        .donation-btn:hover {
-            background: #1d3208;
+        .donation-btn:hover, .donation-btn:focus {
+            background: #22400c;
+        }
+        @media (max-width: 900px) {
+            .donation-options {
+                gap: 1rem;
+            }
+            .donation-option {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 700px) {
+            .donation-container {
+                padding: 1rem 0.5rem;
+            }
+            .donation-options {
+                flex-direction: column;
+                align-items: center;
+            }
+            .donation-option {
+                width: 100%;
+                min-width: unset;
+                margin-bottom: 1.2rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .donation-container h1 {
+                font-size: 1.3rem;
+            }
+            .donation-option {
+                padding: 1.2rem 0.7rem;
+            }
+            .donation-details {
+                font-size: 0.95rem;
+            }
+            .donation-btn {
+                font-size: 0.98rem;
+                padding: 0.6rem 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="main-navigation">
-        <div class="container">
-            <header class="site-header">
-                <div class="logo">
-                    <ul>
-                        <li>
-                            <a href="/">
-                                <img src="img/ico/logo.png" alt="Joy of Faith logo">
-                            </a>
-                        </li>
-                        <li>
-                            <div class="logo-text">
-                                <h2>
-                                    Joy of Faith<br>
-                                    North Caloocan
-                                </h2>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <ul class="nav-links">
-                    <li style="font-size: 20px;"><a href="index.html">Home</a></li>
-                    <li style="font-size: 20px;"><a href="events.html">Events</a></li>
-                    <li style="font-size: 20px;"><a href="history.html">History</a></li>
-                    <li style="font-size: 20px;"><a href="blog.html">Blog / News</a></li>
-                    <li style="font-size: 20px;"><a href="about.html">About Us</a></li>
-                </ul>
-                <div class="logbot">
-                    <a href="login.html">
-                        <img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;">
-                    </a>
-                </div>
-            </header>
-        </div>
-    </nav>
+    <header class="header">
+        <nav class="main-navigation">
+            <div class="container">                
+                <header class="site-header">
+                    <div class="logo">
+                        <ul>
+                            <li>
+                                <a href="/">
+                                    <img src="img/ico/logo.png" alt="Joy of Faith logo">
+                                </a>
+                            </li>
+                            <li>
+                                <div class="logo-text">
+                                    <h2>
+                                        Joy of Faith<br>
+                                        North Caloocan
+                                    </h2>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>                    
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <rect y="4" width="24" height="2" fill="#2d4e10"/>
+                            <rect y="11" width="24" height="2" fill="#2d4e10"/>
+                            <rect y="18" width="24" height="2" fill="#2d4e10"/>
+                        </svg>
+                    </button>
+                    <nav class="nav-menu">                        
+                        <ul class="nav-links">
+                            <li style="--i: 1">
+                                <a href="index.html" class="active">Home</a>
+                            </li>
+                            <li style="--i: 2">
+                                <a href="events.html">Events</a>
+                            </li>
+                            <li style="--i: 3">
+                                <a href="history.html">History</a>
+                            </li>
+                            <li style="--i: 4">
+                                <a href="blog.html">Blog / News</a>
+                            </li>
+                            <li style="--i: 5">
+                                <a href="about.html">About Us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="logbot">
+                        <a href="login.html">
+                            <img src="./img/ico/profile.png" alt="Profile" style="height: 30px; width: 30px;">
+                        </a>
+                    </div>
+                    <div class="mobile-overlay"></div>
+                </header>
+            </div>
+        </nav>
+    </header>
 
-    <div class="donation-container">
-        <h1 style="color: #2d4e10; text-align: center; margin-bottom: 2rem;">Support Our Ministry</h1>
-        
-        <div class="donation-options">
-            <div class="donation-option">
-                <img src="./img/ico/gcash.png" alt="GCash">
-                <h3>GCash</h3>
-                <div class="donation-details">
-                    <p><strong>Account Name:</strong> Joy of Faith Church</p>
-                    <p><strong>Number:</strong> 0912-345-6789</p>
+
+        <div class="donation-container">
+            <h1 style="color: #2d4e10; text-align: center; margin-bottom: 2rem;">Support Our Ministry</h1>
+            
+            <div class="donation-options">
+                <div class="donation-option">
+                    <img src="./img/ico/gcash.png" alt="GCash">
+                    <h3>GCash</h3>
+                    <div class="donation-details">
+                        <p><strong>Account Name:</strong> Joy of Faith Church</p>
+                        <p><strong>Number:</strong> 0912-345-6789</p>
+                    </div>
+                    <a href="https://www.gcash.com" class="donation-btn" target="_blank" style="margin-top:auto;">Donate via GCash</a>
                 </div>
-                <a href="https://www.gcash.com" class="donation-btn" target="_blank">Donate via GCash</a>
+
+                <div class="donation-option">
+                    <img src="./img/ico/bdo.png" alt="Bank Transfer">
+                    <h3>Bank Transfer</h3>
+                    <div class="donation-details">
+                        <p><strong>Bank:</strong> BDO</p>
+                        <p><strong>Account Name:</strong> Joy of Faith Church</p>
+                        <p><strong>Account Number:</strong> 1234-5678-9012</p>
+                    </div>
+                    <a href="#" class="donation-btn" onclick="alert('Please use the bank details provided above.')" style="margin-top:auto;">Bank Details</a>
+                </div>
+
+                <div class="donation-option">
+                    <img src="./img/ico/paypal.png" alt="PayPal">
+                    <h3>PayPal</h3>
+                    <div class="donation-details">
+                        <p><strong>PayPal Email:</strong> donate@joyoffaith.org</p>
+                    </div>
+                    <a href="https://www.paypal.com" class="donation-btn" target="_blank" style="margin-top:auto;">Donate via PayPal</a>
+                </div>
             </div>
 
-            <div class="donation-option">
-                <img src="./img/ico/bdo.png" alt="Bank Transfer">
-                <h3>Bank Transfer</h3>
-                <div class="donation-details">
-                    <p><strong>Bank:</strong> BDO</p>
-                    <p><strong>Account Name:</strong> Joy of Faith Church</p>
-                    <p><strong>Account Number:</strong> 1234-5678-9012</p>
-                </div>
-                <a href="#" class="donation-btn" onclick="alert('Please use the bank details provided above.')">Bank Details</a>
-            </div>
-
-            <div class="donation-option">
-                <img src="./img/ico/paypal.png" alt="PayPal">
-                <h3>PayPal</h3>
-                <div class="donation-details">
-                    <p><strong>PayPal Email:</strong> donate@joyoffaith.org</p>
-                </div>
-                <a href="https://www.paypal.com" class="donation-btn" target="_blank">Donate via PayPal</a>
+            <div style="text-align: center; margin-top: 2rem; color: #666;">
+                <p>Your donations help us continue our mission to spread God's word and support our community.</p>
+                <p>For any questions about donations, please contact us at support@joyoffaith.org</p>
             </div>
         </div>
-
-        <div style="text-align: center; margin-top: 2rem; color: #666;">
-            <p>Your donations help us continue our mission to spread God's word and support our community.</p>
-            <p>For any questions about donations, please contact us at support@joyoffaith.org</p>
-        </div>
-    </div>
 </body>
 </html>

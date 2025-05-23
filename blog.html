@@ -4,490 +4,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Joy of Faith - Blog/News</title>
     <link rel="stylesheet" href="style1.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
     <script src="js/navigation.js" defer></script>
     <style>   
-    
-    .piccon{
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    }
-
-    .main-navigation {
-        background-color: #e1e2e4;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-    }
-
-    .site-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem 2rem;
-        max-width: 1400px;
-        margin: 0 auto;
-    }
-
-    .logo {
-        display: flex;
-        align-items: center;
-    }
-
-    .logo ul {
-        display: flex;
-        align-items: center;
-        list-style: none;
+    /* Responsive Blog Page Styles */
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        background: #fff;
+        color: #222;
         margin: 0;
         padding: 0;
     }
-
-    .logo img {
-        width: 70px;
-        height: 70px;
-        object-fit: contain;
-        padding-right: 15px;
-        transition: transform 0.3s ease;
-    }
-
-    .logo:hover img {
-        transform: scale(1.05);
-    }
-
-    .logo-text h2 {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 35px;
-        line-height: 1.2;
-        letter-spacing: 0.1rem;
-        font-weight: bold;
-        color: #2d4e10;
-        margin: 0;
-    }
-
-    .nav-menu {
-        flex: 1;
-        display: flex;
-        justify-content: center;
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 2.5rem;
-        align-items: center;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-
-    .nav-links li a {
-        color: #2d4e10;
-        text-decoration: none;
-        font-size: 1.1rem;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        transition: all 0.3s ease;
-    }
-
-    .nav-links li a:hover,
-    .nav-links li a.active {
-        background-color: rgba(45, 78, 16, 0.1);
-        color: #2d4e10;
-    }
-
-    .logbot {
-        margin-left: 2rem;
-    }
-
-    .logbot img {
-        width: 50px;
-        height: 50px;
-        transition: transform 0.3s ease;
-    }
-
-    .logbot:hover img {
-        transform: scale(1.1);
-    }
-
     .blog-page {
+        padding: 40px 0;
+        background: #f8f8f8;
         min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        background-color: #e1e2e4;
-        padding-top: 80px; /* Added padding to prevent content from being hidden behind the fixed header */
     }
-
     .blog-content {
-        flex: 1;
-        padding: 4rem 2rem;
-        max-width: 1400px;
+        max-width: 1200px;
         margin: 0 auto;
-        margin-bottom: 100px;
+        padding: 0 16px;
     }
-
     .blog-content h1 {
-        text-align: center;
         color: #2d4e10;
+        font-weight: 600;
+        text-align: center;
+        margin-bottom: 32px;
         font-size: 2.5rem;
-        margin-bottom: 3rem;
-        position: relative;
     }
-
-    .blog-content h1:after {
-        content: '';
-        display: block;
-        width: 100px;
-        height: 3px;
-        background: #2d4e10;
-        margin: 15px auto 0;
-    }
-
     .blog-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 2.5rem;
-        padding: 1rem;
-        justify-content: center;
-        max-width: 1400px;
-        margin: 0 auto;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
     }
-
     .blog-card {
-        width: 100%;
-        height: 100%;
-        min-height: 450px;
-        background: white;
-        border-radius: 15px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 12px rgba(45, 78, 16, 0.08);
         overflow: hidden;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        transition: all 0.3s ease;
         display: flex;
         flex-direction: column;
+        transition: box-shadow 0.2s;
     }
-
     .blog-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 24px rgba(45, 78, 16, 0.16);
     }
-
     .blog-image {
         width: 100%;
-        height: 250px;
+        height: 200px;
         object-fit: cover;
-        transition: transform 0.3s ease;
+        background: #eee;
     }
-
-    .blog-card:hover .blog-image {
-        transform: scale(1.05);
-    }
-
     .blog-text {
-        padding: 2rem;
+        padding: 20px;
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
     }
-
     .blog-text h2 {
         color: #2d4e10;
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        line-height: 1.4;
+        font-size: 1.25rem;
+        margin: 0 0 12px 0;
+        font-weight: 600;
     }
-
     .blog-text p {
-        color: #666;
-        line-height: 1.8;
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
+        flex: 1;
+        margin: 0 0 16px 0;
+        font-size: 1rem;
+        color: #333;
     }
-
     .blog-date {
-        color: #888;
         font-size: 0.95rem;
-        padding-top: 1rem;
-        border-top: 1px solid #eee;
+        color: #2d4e10;
+        font-weight: 500;
+        margin-top: auto;
+        letter-spacing: 0.5px;
     }
 
-    /* PC-specific styles */
-    @media (min-width: 1200px) {
-        .blog-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-        
-        .blog-content {
-            padding: 5rem 4rem;
-        }
-
-        .blog-card {
-            min-height: 500px;
-        }
-
-        .blog-text {
-            padding: 2.5rem;
-        }
-    }
-
-    /* Tablet styles */
-    @media (min-width: 769px) and (max-width: 1199px) {
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
         .blog-grid {
             grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+        .blog-content h1 {
+            font-size: 2rem;
         }
     }
-
-    @media (max-width: 768px) {
-        .site-header {
-            padding: 15px 20px;
-            position: relative;
-        }
-
-        .logo-text h2 {
-            font-size: 24px;
-        }
-
-        .nav-menu {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(225, 226, 228, 0.98);
-            transform: translateX(-100%);
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .nav-menu.active {
-            transform: translateX(0);
-        }
-
-        .nav-links {
-            flex-direction: column;
-            gap: 2rem;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease;
-        }
-
-        .nav-menu.active .nav-links {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .nav-links li {
-            margin: 0;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            transition-delay: calc(0.1s * var(--i));
-        }
-
-        .nav-menu.active .nav-links li {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .menu-toggle {
-            display: block;
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 1002;
-        }
-
-        .menu-toggle.active {
-            opacity: 0.5;
-        }
-
-        .logbot {
-            position: absolute;
-            top: 50%;
-            right: 80px;
-            transform: translateY(-50%);
-            z-index: 1001;
-        }
-
-        .blog-content {
-            padding: 1rem;
-            margin-bottom: 50px;
-        }
-
+    @media (max-width: 700px) {
         .blog-grid {
-            padding: 1rem;
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
-
+        .blog-content {
+            padding: 0 8px;
+        }
+        .blog-content h1 {
+            font-size: 1.5rem;
+        }
         .blog-card {
-            min-height: auto;
+            border-radius: 8px;
         }
-
-        .blog-text h2 {
-            font-size: 1.3rem;
+        .blog-image {
+            height: 160px;
         }
-
-        .blog-text p {
-            font-size: 0.9rem;
-        }
-
-        .logo {
-            z-index: 1001;
+        .blog-text {
+            padding: 14px;
         }
     }
-
-    @media (max-width: 480px) {
-        .blog-content {
-            padding: 0.5rem;
+    @media (max-width: 400px) {
+        .blog-content h1 {
+            font-size: 1.1rem;
         }
-
-        .blog-grid {
-            padding: 0.5rem;
-            gap: 1rem;
+        .blog-image {
+            height: 110px;
         }
-
-        .blog-text {
-            padding: 1rem;
-        }
-
         .blog-text h2 {
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
-
-        .blog-date {
-            font-size: 0.8rem;
+        .blog-text p {
+            font-size: 0.95rem;
         }
     }
     </style>
 </head>
 <body>
-    <nav class="main-navigation">
-        <div class="container">            <header class="site-header">
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <svg viewBox="0 0 24 24" width="24" height="24">
-                        <rect y="4" width="24" height="2" fill="#2d4e10"/>
-                        <rect y="11" width="24" height="2" fill="#2d4e10"/>
-                        <rect y="18" width="24" height="2" fill="#2d4e10"/>
-                    </svg>
-                </button>
-                <div class="logo">
-                    <ul>
-                        <li>
-                            <a href="/">
-                                <img src="img/ico/logo.png" alt="Joy of Faith logo">
-                            </a>
-                        </li>
-                        <li>
-                            <div class="logo-text">
-                                <h2>
-                                    Joy of Faith<br>
-                                    North Caloocan
-                                </h2>
-                            </div>
-                        </li>
-                    </ul>                </div>
-                <nav class="nav-menu">
-                    <ul class="nav-links">
-                        <li style="font-size: 20px;"><a href="index.html">Home</a></li>
-                        <li style="font-size: 20px;"><a href="events.html">Events</a></li>
-                        <li style="font-size: 20px;"><a href="history.html">History</a></li>
-                        <li style="font-size: 20px;"><a href="blog.html" class="active">Blog / News</a></li>
-                        <li style="font-size: 20px;"><a href="about.html">About Us</a></li>
-                    </ul>
-                </nav>
-                <div class="logbot">
-                    <a href="login.html">
-                        <img src="./img/ico/profile.png" alt="Profile" style="height: 50px; width: 50px;">
-                    </a>
-                </div>
-            </header>
-        </div>
-    </nav>
-
-    <div class="blog-page">
-        <div class="blog-content">
-            <h1>Church Blog & News</h1>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <img src="./img/pics/PICTURE1.jpg" alt="3rd Anniversary" class="blog-image">
-                    <div class="blog-text">
-                        <h2>3rd Year Anniversary Celebration</h2>
-                        <p>Witness our church's growth as we celebrate three years of God's faithfulness. More people are attending and growing as leaders in their faith journey.</p>
-                        <div class="blog-date">March 15, 2024</div>
+    <header class="header">
+        <nav class="main-navigation">
+            <div class="container">                
+                <header class="site-header">
+                    <div class="logo">
+                        <ul>
+                            <li>
+                                <a href="/">
+                                    <img src="img/ico/logo.png" alt="Joy of Faith logo">
+                                </a>
+                            </li>
+                            <li>
+                                <div class="logo-text">
+                                    <h2>
+                                        Joy of Faith<br>
+                                        North Caloocan
+                                    </h2>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>                    
+                    <button class="menu-toggle" aria-label="Toggle menu">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                            <rect y="4" width="24" height="2" fill="#2d4e10"/>
+                            <rect y="11" width="24" height="2" fill="#2d4e10"/>
+                            <rect y="18" width="24" height="2" fill="#2d4e10"/>
+                        </svg>
+                    </button>
+                    <nav class="nav-menu">                        
+                        <ul class="nav-links">
+                            <li style="--i: 1">
+                                <a href="index.html" class="active">Home</a>
+                            </li>
+                            <li style="--i: 2">
+                                <a href="events.html">Events</a>
+                            </li>
+                            <li style="--i: 3">
+                                <a href="history.html">History</a>
+                            </li>
+                            <li style="--i: 4">
+                                <a href="blog.html">Blog / News</a>
+                            </li>
+                            <li style="--i: 5">
+                                <a href="about.html">About Us</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="logbot">
+                        <a href="login.html">
+                            <img src="./img/ico/profile.png" alt="Profile" style="height: 30px; width: 30px;">
+                        </a>
                     </div>
-                </div>
+                    <div class="mobile-overlay"></div>
+                </header>
+            </div>
+        </nav>
+    </header>
 
-                <div class="blog-card">
-                    <img src="./img/pics/PICTURE3.jpg" alt="2nd Anniversary" class="blog-image">
-                    <div class="blog-text">
-                        <h2>Looking Back: 2nd Anniversary Highlights</h2>
-                        <p>A heartwarming celebration of growth in numbers and faith. Our church family continues to strengthen in unity and purpose.</p>
-                        <div class="blog-date">March 15, 2023</div>
+
+        <div class="blog-page">
+            <div class="blog-content">
+                <h1>Church Blog & News</h1>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <img src="./img/pics/PICTURE1.jpg" alt="3rd Anniversary" class="blog-image">
+                        <div class="blog-text">
+                            <h2>3rd Year Anniversary Celebration</h2>
+                            <p>Witness our church's growth as we celebrate three years of God's faithfulness. More people are attending and growing as leaders in their faith journey.</p>
+                            <div class="blog-date">March 15, 2024</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="blog-card">
-                    <img src="./img/pics/PICTURE5.jpg" alt="Night Prayer" class="blog-image">
-                    <div class="blog-text">
-                        <h2>Weekly Night Prayer Gatherings</h2>
-                        <p>Join us every Thursday from 8-9pm as we deepen our relationship with God through prayer and fellowship.</p>
-                        <div class="blog-date">Weekly Update</div>
+                    <div class="blog-card">
+                        <img src="./img/pics/PICTURE3.jpg" alt="2nd Anniversary" class="blog-image">
+                        <div class="blog-text">
+                            <h2>Looking Back: 2nd Anniversary Highlights</h2>
+                            <p>A heartwarming celebration of growth in numbers and faith. Our church family continues to strengthen in unity and purpose.</p>
+                            <div class="blog-date">March 15, 2023</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="blog-card">
-                    <img src="./img/pics/PICTURE7.jpg" alt="Online Mentoring" class="blog-image">
-                    <div class="blog-text">
-                        <h2>Online Mentoring ng mga Leaders (8-9pm) FRIDAY</h2>
-                        <p>This is training and preparation for the appointment of each leader in the work entrusted to us by God.</p>
-                        <div class="blog-date">Weekly Update</div>
+                    <div class="blog-card">
+                        <img src="./img/pics/PICTURE5.jpg" alt="Night Prayer" class="blog-image">
+                        <div class="blog-text">
+                            <h2>Weekly Night Prayer Gatherings</h2>
+                            <p>Join us every Thursday from 8-9pm as we deepen our relationship with God through prayer and fellowship.</p>
+                            <div class="blog-date">Weekly Update</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="blog-card">
-                    <img src="./img/pics/PICTURE9.jpg" alt="Mentoring" class="blog-image">
-                    <div class="blog-text">
-                        <h2>MENTORING</h2>
-                        <p>Mentoring ng mga kabataan kananayan katatayan, yung dito naman may mga kasama silang leaders at may kasama silang mga hindi pa leaders, at konting share-ran lang ng bible verse etc.</p>
-                        <div class="blog-date">Weekly Update</div>
+                    <div class="blog-card">
+                        <img src="./img/pics/PICTURE7.jpg" alt="Online Mentoring" class="blog-image">
+                        <div class="blog-text">
+                            <h2>Online Mentoring ng mga Leaders (8-9pm) FRIDAY</h2>
+                            <p>This is training and preparation for the appointment of each leader in the work entrusted to us by God.</p>
+                            <div class="blog-date">Weekly Update</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="blog-card">
-                    <img src="./img/pics/PICTURE12.jpg" alt="Youth Service" class="blog-image">
-                    <div class="blog-text">
-                        <h2>Youth service every month Sept 28 4PM - 6PM</h2>
-                        <p>Youth service is a gathering dedicated to young people, designed to bring them together in worship, prayer, and studying God’s Word. The goal is to inspire the youth to grow deeper in their faith, develop their talents and abilities, and build a closer relationship with Christ.</p>
-                        <div class="blog-date">Monthly Update</div>
+                    <div class="blog-card">
+                        <img src="./img/pics/PICTURE9.jpg" alt="Mentoring" class="blog-image">
+                        <div class="blog-text">
+                            <h2>MENTORING</h2>
+                            <p>Mentoring ng mga kabataan kananayan katatayan, yung dito naman may mga kasama silang leaders at may kasama silang mga hindi pa leaders, at konting share-ran lang ng bible verse etc.</p>
+                            <div class="blog-date">Weekly Update</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="blog-card">
-                    <img src="./img/pics/PICTURE14.jpg" alt="Baptism" class="blog-image">
-                    <div class="blog-text">
-                        <h2>Baptism</h2>
-                        <p>The baptismal service in our church is an annual special event held to signify the believers' commitment to their faith in Christ. It is a meaningful ceremony symbolizing new life and cleansing from sin through obedience to God's command. This takes place in a designated location, such as a river, sea, or baptismal pool, where each candidate is baptized in water as a public declaration of their personal acceptance of Jesus.</p>
-                        <div class="blog-date">Annual Update</div>
+                    <div class="blog-card">
+                        <img src="./img/pics/PICTURE12.jpg" alt="Youth Service" class="blog-image">
+                        <div class="blog-text">
+                            <h2>Youth service every month Sept 28 4PM - 6PM</h2>
+                            <p>Youth service is a gathering dedicated to young people, designed to bring them together in worship, prayer, and studying God’s Word. The goal is to inspire the youth to grow deeper in their faith, develop their talents and abilities, and build a closer relationship with Christ.</p>
+                            <div class="blog-date">Monthly Update</div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="blog-card">
-                    <img src="./img/pics/PICTURE17.jpg" alt="Sunday Service" class="blog-image">
-                    <div class="blog-text">
-                        <h2>Sunday Service 9AM - 11AM</h2>
-                        <p>Our Sunday service is a weekly gathering to worship God, hear His Word, and grow in faith. It includes praise and worship, an inspiring sermon, and prayer. It’s a time to honor God, strengthen our faith, and connect with one another.</p>
-                        <div class="blog-date">Weekly Update</div>
+                    <div class="blog-card">
+                        <img src="./img/pics/PICTURE14.jpg" alt="Baptism" class="blog-image">
+                        <div class="blog-text">
+                            <h2>Baptism</h2>
+                            <p>The baptismal service in our church is an annual special event held to signify the believers' commitment to their faith in Christ. It is a meaningful ceremony symbolizing new life and cleansing from sin through obedience to God's command. This takes place in a designated location, such as a river, sea, or baptismal pool, where each candidate is baptized in water as a public declaration of their personal acceptance of Jesus.</p>
+                            <div class="blog-date">Annual Update</div>
+                        </div>
+                    </div>
+
+                    <div class="blog-card">
+                        <img src="./img/pics/PICTURE17.jpg" alt="Sunday Service" class="blog-image">
+                        <div class="blog-text">
+                            <h2>Sunday Service 9AM - 11AM</h2>
+                            <p>Our Sunday service is a weekly gathering to worship God, hear His Word, and grow in faith. It includes praise and worship, an inspiring sermon, and prayer. It’s a time to honor God, strengthen our faith, and connect with one another.</p>
+                            <div class="blog-date">Weekly Update</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </body>
 </html>
