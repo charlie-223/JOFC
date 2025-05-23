@@ -20,6 +20,7 @@
             gap: 2rem;
             padding: 3rem 1rem;
             flex-wrap: wrap;
+            position: relative;
         }
         .hero-content {
             flex: 1 1 350px;
@@ -79,7 +80,11 @@
             padding: 0.5rem 0.1rem;
             margin-top: 0.5rem;
             box-shadow: 0 2px 8px rgba(56,142,60,0.07);
-            width: 100%;
+            width: auto;
+            display: flex;
+            justify-content: center;
+            max-width: 100%;
+            overflow-x: auto;
         }
         .MV ul {
             display: flex;
@@ -90,6 +95,8 @@
             margin: 0;
             padding: 0;
             list-style: none;
+            width: auto;
+            max-width: 100%;
         }
         .MV li {
             display: flex;
@@ -101,6 +108,8 @@
             border-radius: 10px;
             padding: 0.4rem 0.7rem;
             box-shadow: 0 1px 4px rgba(56,142,60,0.04);
+            flex: 1 1 160px;
+            max-width: 250px;
         }
         .MV img {
             width: 28px;
@@ -120,22 +129,31 @@
             font-size: 0.78rem;
         }
         .hero-image {
-            flex: 0 0 320px;
+            position: fixed;
+            bottom: -80px;
+            right: -80px;
+            width: 700px;
+            height: 700px;
+            opacity: 0.90; /* Increased opacity */
+            pointer-events: none;
+            z-index: -1;
+            transform: rotate(-5deg);
+            filter: brightness(1) contrast(1.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 420px;
-            z-index: 1;
-            order: 2;
+            border-radius: 50%; /* Make watermark circular */
+            overflow: hidden;   /* Ensure image stays inside the circle */
+            background: #fff;   /* Optional: white background for the circle */
         }
         .hero-image img {
-            width: 350px;
-            height: 350px;
-            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Fill the circle */
             border-radius: 50%;
-            border: 6px solid #e0e0e0;
-            box-shadow: 0 4px 24px rgba(56,142,60,0.10);
-            background: #fff;
+            border: none;
+            box-shadow: none;
+            background: transparent;
             display: block;
         }
         @media (max-width: 900px) {
@@ -145,24 +163,28 @@
                 gap: 2rem;
             }
             .hero-image {
-                order: -1;
-                justify-content: center;
-                margin-bottom: 1.5rem;
+                width: 400px;
+                height: 400px;
+                bottom: -40px;
+                right: -40px;
             }
             .hero-content {
                 order: 2;
                 text-align: center;
                 align-items: center;
             }
-            /* Remove flex-direction: column for .MV ul so it stays row on all sizes */
             .MV ul {
                 flex-direction: row;
                 gap: 1.5rem;
                 align-items: center;
                 justify-content: center;
+                width: auto;
+                max-width: 100%;
             }
             .MV {
-                width: 100%;
+                width: auto;
+                justify-content: center;
+                max-width: 100%;
             }
         }
         @media (max-width: 600px) {
@@ -172,18 +194,29 @@
             .hero-title {
                 font-size: 1.2rem;
             }
-            .hero-image img {
-                width: 300px;
-                height: 300px;
+            .hero-image {
+                width: 220px;
+                height: 220px;
+                bottom: -20px;
+                right: -20px;
             }
             .MV {
                 padding: 1rem 0.5rem;
+                width: 100%;
+                justify-content: center;
+                max-width: 100%;
             }
             .MV ul {
-                flex-direction: row;
-                gap: 1rem;
+                flex-direction: column;
+                gap: 0.7rem;
                 justify-content: center;
-                align-items: flex-start;
+                align-items: stretch;
+                width: 100%;
+                max-width: 100%;
+            }
+            .MV li {
+                max-width: 100%;
+                width: 100%;
             }
         }
     </style>
@@ -253,7 +286,7 @@
         <section class="hero-section" style="position:relative;">
             <div class="hero-image">
                 <img src="jofc.jpeg" alt="Joy of Faith community">
-                <div></div>
+                <!-- <div></div> -->
             </div>
             <div class="hero-content">
                 <h1 class="hero-title">
